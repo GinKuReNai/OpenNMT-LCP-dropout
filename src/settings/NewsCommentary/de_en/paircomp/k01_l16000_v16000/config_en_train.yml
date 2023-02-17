@@ -1,0 +1,25 @@
+# NewsCommentary（英語）に対するPairCompression-based LCP-dropout設定ファイル
+
+file:
+  # 訓練用データ（入力）
+  train: "/home/machine-translation/datasets/NewsCommentary/processed_data/de_en/train.en"
+  # 過去の動作再現のためのシード値（実行時間）（ない場合は自動で作成）（入力・出力）
+  pref: "/home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/train/pref.en"
+  # 生成された単語を1行毎に記録したファイル（出力）
+  vocab: "/home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/train/vocab.en"
+  # サブワード分割した結果の文字列をスペースで区切ったファイル（出力）
+  out: "/home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/train/train_en.lcp"
+  # ループ回数と生成したサブワード数の対応関係を記録するCSV
+  csv: "/home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/csv/result_en.csv"
+  # 実行時間を出力するためのファイル
+  time: "/home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/time/time_en.txt"
+
+param:
+  # top k
+  k: 1
+  # 1度の実行で指定する語彙サイズ
+  l: 16000
+  # 全体の語彙サイズ
+  v: 16000
+  # ドロップアウト率
+  d: 0.1

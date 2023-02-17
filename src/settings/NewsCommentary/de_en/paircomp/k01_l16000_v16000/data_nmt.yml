@@ -1,0 +1,40 @@
+# OpenNMT-tf 実行時パラメータ
+
+model_dir: /home/machine-translation/src/models/NewsCommentary/de_en/paircomp/k01_l16000_v16000/
+
+data:
+  train_features_file: /home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/train/train_de.lcp
+  train_labels_file: /home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/train/train_en.lcp
+  eval_features_file: /home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/valid/valid_de.lcp
+  eval_labels_file: /home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/valid/valid_en.lcp
+  source_vocabulary: /home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/nmt-tf/vocab_de.txt
+  target_vocabulary: /home/machine-translation/src/results/NewsCommentary/de_en/paircomp/k01_l16000_v16000/nmt-tf/vocab_en.txt
+
+  # 学習パラメータ
+params:
+  optimizer: LazyAdam
+  optimizer_params:
+    beta_1: 0.9
+    beta_2: 0.998
+  learning_rate: 2.0
+  regurarization:
+    type: l2
+  decay_type: NoamDecay
+  decay_params:
+    model_dim: 512
+    warmup_steps: 8000
+  label_smoothing: 0.1
+  beam_width: 5
+train:
+  batch_size: 3072
+  batch_type: tokens
+  # 学習ステップ
+  max_step: 100000
+  save_checkpoints_steps: 10000
+  save_summary_steps: 1000
+
+eval:
+  scorers: bleu
+  external_evaluators: bleu
+  export_on_best: bleu
+  

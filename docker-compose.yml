@@ -1,0 +1,19 @@
+# docker compose up -d
+version: '3'
+  
+services:
+  nmt:
+    container_name: nmt
+    # CUDAの使用を可能にする
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    # 必要に応じてホストのUser ID, Group IDに書き換えること
+    user: "1000:1000"
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./src:/home/ML/src
+      - ./datasets:/home/ML/datasets
+    tty: true

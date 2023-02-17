@@ -1,0 +1,24 @@
+# NewsCommentary（英語）に対するSentencePiece設定ファイル
+
+file:
+  # 入力ファイル
+  train: "/home/machine-translation/datasets/NewsCommentary/processed_data/de_en/train.en"
+  valid: "/home/machine-translation/datasets/NewsCommentary/processed_data/de_en/valid.en"
+  test:  "/home/machine-translation/datasets/NewsCommentary/processed_data/de_en/test.en"
+  # 生成モデル
+  prefix: "/home/machine-translation/src/results/NewsCommentary/de_en/sentencepiece/sp_en"
+  model: "/home/machine-translation/src/results/NewsCommentary/de_en/sentencepiece/sp_en.model"
+  # 出力ファイル
+  train_out: "/home/machine-translation/src/results/NewsCommentary/de_en/sentencepiece/train_en.sp"
+  valid_out: "/home/machine-translation/src/results/NewsCommentary/de_en/sentencepiece/valid_en.sp"
+  test_out: "/home/machine-translation/src/results/NewsCommentary/de_en/sentencepiece/test_en.sp"
+
+param:
+  # 学習モデル(sentencePiece = 'unigram', bpe(-dropout) = 'bpe')
+  model_type: "unigram"
+  # 全体の語彙サイズ
+  vocab_size: 16000
+  # Character Coverage(日本語・中国語の場合は0.996)
+  char_coverage: 1.0
+  # Alpha(sentencePiece, bpe = 0.0, bpe-dropout = 0.1)
+  alpha: 0.0

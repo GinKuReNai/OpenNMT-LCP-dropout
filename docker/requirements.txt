@@ -1,0 +1,6 @@
+mosestokenizer
+OpenNMT-tf
+sentencepiece
+matplotlib
+datasets
+cython
